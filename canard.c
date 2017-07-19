@@ -247,7 +247,7 @@ void canardPopTxQueue(CanardInstance* ins)
     freeBlock(&ins->allocator, item);
 }
 
-void canardHandleRxFrame(CanardInstance* ins, const CanardCANFrame* frame, uint64_t timestamp_usec)
+void canardHandleRxFrame(CanardInstance* ins, const CanardCANFrame* frame, uint32_t timestamp_usec)
 {
     const CanardTransferType transfer_type = extractTransferType(frame->id);
     const uint8_t destination_node_id = (transfer_type == CanardTransferTypeBroadcast) ?
@@ -473,7 +473,7 @@ void canardHandleRxFrame(CanardInstance* ins, const CanardCANFrame* frame, uint6
     rx_state->next_toggle ^= 1;
 }
 
-void canardCleanupStaleTransfers(CanardInstance* ins, uint64_t current_time_usec)
+void canardCleanupStaleTransfers(CanardInstance* ins, uint32_t current_time_usec)
 {
     CanardRxState* prev = ins->rx_states, * state = ins->rx_states;
 
