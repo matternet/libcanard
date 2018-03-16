@@ -324,6 +324,12 @@ void canardSetLocalNodeID(CanardInstance* ins,
 uint8_t canardGetLocalNodeID(const CanardInstance* ins);
 
 /**
+ * Forgets the current node ID value so that a new Node ID can be assigned.
+ * This is useful for Battery Packs that are never power cycled, but need to be added and removed from networks regularly.
+ */
+void canardForgetLocalNodeID(CanardInstance* ins);
+
+/**
  * Sends a broadcast transfer.
  * If the node is in passive mode, only single frame transfers will be allowed (they will be transmitted as anonymous).
  *
