@@ -43,3 +43,9 @@ cmake-build-*/
 .cproject
 .pydevproject
 .gdbinit
+
+# Generated files
+dsdlc_generated/
+
+# Pycache
+__pycache__/

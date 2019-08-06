@@ -1,13 +1,11 @@
 # Libcanard
+[![Forum](https://img.shields.io/discourse/https/forum.uavcan.org/users.svg)](https://forum.uavcan.org)
 [![Build Status](https://travis-ci.org/UAVCAN/libcanard.svg?branch=master)](https://travis-ci.org/UAVCAN/libcanard)
 [![Coverity Scan](https://scan.coverity.com/projects/uavcan-libcanard/badge.svg)](https://scan.coverity.com/projects/uavcan-libcanard)
-[![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg)](https://gitter.im/UAVCAN/general)
 
 Minimal implementation of the UAVCAN protocol stack in C for resource constrained applications.
 
-Links:
-
-* **[DISCUSSION GROUP](https://groups.google.com/forum/#!forum/uavcan)**
+Get help on the **[UAVCAN Forum](https://forum.uavcan.org)**.
 
 ## Usage
 
@@ -31,6 +29,11 @@ and you're ready to roll.
 
 Also you may want to use one of the available drivers for various CAN backends
 that are distributed with Libcanard - check out the `drivers/` directory to find out more.
+
+If you wish to override some of the default options, e.g., assert macros' definition,
+define the macro `CANARD_ENABLE_CUSTOM_BUILD_CONFIG` as a non-zero value
+(e.g. for GCC or Clang: `-DCANARD_ENABLE_CUSTOM_BUILD_CONFIG=1`)
+and provide your implementation in a file named `canard_build_config.h`.
 
 Example for Make:
 
@@ -61,7 +64,7 @@ This section is intended only for library developers and contributors.
 
 The library design document can be found in [DESIGN.md](DESIGN.md)
 
-Contributors, please follow the [Zubax Style Guide](https://github.com/Zubax/zubax_style_guide).
+Contributors, please follow the [Zubax C++ Coding Conventions](https://kb.zubax.com/x/84Ah).
 
 ### Building and Running Tests
 
@@ -86,3 +89,16 @@ tar czvf libcanard.tgz cov-int
 ```
 
 Then upload the resulting archive to Coverity.
+
+### Running flake8 for Python code
+
+[Flake8](http://flake8.pycqa.org/en/latest/) is a tool for checking correctness and style of Python code.
+
+The setup for Flake8 is defined in `setup.cfg`.
+
+Flake8 should be run from the top level directory, ideally code should be reviewed to make sure there are no
+flake errors before it is merged.
+```bash
+cd libcanard
+flake8
+```
